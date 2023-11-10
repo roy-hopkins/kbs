@@ -10,7 +10,7 @@ use anyhow::{anyhow, Result};
 use base64::engine::general_purpose::STANDARD;
 use base64::Engine;
 use kbs_types::{Request, Tee, TeePubKey};
-use rand::{thread_rng, Rng};
+//use rand::{thread_rng, Rng};
 use semver::Version;
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -20,13 +20,14 @@ use uuid::Uuid;
 pub(crate) static KBS_SESSION_ID: &str = "kbs-session-id";
 
 fn nonce() -> Result<String> {
+    /*
     let mut nonce: Vec<u8> = vec![0; 32];
-
-    thread_rng()
-        .try_fill(&mut nonce[..])
-        .map_err(anyhow::Error::from)?;
-
+        thread_rng()
+            .try_fill(&mut nonce[..])
+            .map_err(anyhow::Error::from)?;
     Ok(STANDARD.encode(&nonce))
+    */
+    Ok(STANDARD.encode(vec![0; 32]))
 }
 
 #[allow(dead_code)]

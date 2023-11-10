@@ -7,6 +7,7 @@ edition = "2021"
 
 [lib]
 path = "src/lib.rs"
+crate-type = ["rlib", "dylib", "staticlib"]
 
 [[bin]]
 name = "kbs-client"
@@ -21,9 +22,11 @@ base64.workspace = true
 clap = { version = "4.0.29", features = ["derive"] }
 env_logger.workspace = true
 jwt-simple = "0.11.4"
-kbs_protocol = { git = "https://github.com/confidential-containers/guest-components", tag = "v0.8.0" }
+kbs_protocol = { path = "/home/rhopkins/src/attestation-research/cc-guest-components/attestation-agent/kbs_protocol" }
 log.workspace = true
 reqwest = { version = "0.11.18", default-features = false, features = ["cookies", "json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json.workspace = true
+sev = { version = "1.2.0", default-features = false, features = ["snp"] }
 tokio.workspace = true
+uuid = { version = "1.2.2", features = ["serde", "v4"] }
